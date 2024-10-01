@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #BA7373;
+            padding: 20px; 
+            overflow-y: auto; 
+        }
+
+        img {
+            max-width: 100%;
+            height: auto; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        }
+
+        .typing-text {
+            font-size: 20px; 
+            overflow: hidden;
+            max-width: 100%;
+            white-space: normal; 
+            word-break: break-word; 
+            text-align: center; 
+        }
+
+        @media (max-width: 600px) {
+            .typing-text {
+                font-size: 18px; 
+            }
+        }
+
+        /* Sembunyikan audio dari tampilan */
+        audio {
+            display: none; /* Menyembunyikan elemen audio dari tampilan */
+        }
+
+        /* Gaya tombol WhatsApp */
+        #whatsapp-button {
+            display: none; /* Sembunyikan tombol pada awalnya */
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #whatsapp-button:hover {
+            background-color: #20b958;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="YourImg.jpg" alt="Foto"> 
+    <div class="typing-text" id="typing"></div>
+
+    <!-- Audio dengan autoplay dan loop -->
+    <audio id="background-music" autoplay loop>
+        <source src="Backsound.mp3" type="audio/mpeg"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tombol WhatsApp -->
+    <button id="whatsapp-button" onclick="window.location.href='https://wa.me/6288210982908?text=Terimakasih%20min'">Reply to message</button>
+
+    <script>
+        const texts = [
+    "Ciee yang hari ini ultah...",
+    "Selamat ulang tahun kamuu",
+    "Semoga di tahun dan bulan ini",
+    "Tuhan mewujudkan doa doa mu yang blum terwujud",
+    "Dan semoga di tahun ini",
+    "Kamu menjadi lebih baik dari sebelumnya",
+    "Untuk kamuu",
+    "Happy birthday 🎉"
+];
+
+let index = 0;
+const typingElement = document.getElementById('typing');
+const typingSpeed = 200; // Kecepatan mengetik
+const whatsappButton = document.getElementById('whatsapp-button'); // Tombol WhatsApp
+
+function typeText() {
+    if (index < texts.length) {
+        const paragraph = document.createElement('p'); 
+        paragraph.textContent = ''; 
+        typingElement.appendChild(paragraph); 
+        let charIndex = 0;
+
+        function typeChar() {
+            if (charIndex < texts[index].length) {
+                paragraph.textContent += texts[index].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, typingSpeed);
+            } else {
+                index++; 
+                if (index < texts.length) {
+                    setTimeout(typeText, 1000); 
+                } else {
+                    // Tampilkan tombol WhatsApp setelah semua teks selesai diketik
+                    whatsappButton.style.display = 'block';
+                }
+            }
+        }
+
+        typeChar();
+    }
+}
+
+typeText(); // Mulai animasi mengetik
+    </script>
+
+</body>
+</html>

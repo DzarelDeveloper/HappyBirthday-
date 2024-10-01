@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Happy Birthday</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100%;
+      }
+
+      .front {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://raw.githubusercontent.com/DzarelDeveloper/Img/refs/heads/main/IMG-20240928-WA0027.jpg'); 
+  background-size: cover;
+  background-position: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #CE8E8E;
+}
+
+      .front .info {
+        padding: 20px 15px;
+        font-size: 4.5rem;
+        font-weight: bolder;
+        text-align: center;
+      }
+
+      .front .countdown {
+        position: relative;
+        font-size: 5.5rem;
+        padding: 20px 15px;
+      }
+
+      .front .countdown h1 {
+        display: none;
+        opacity: 0;
+      }
+
+      .front .loader {
+        position: relative;
+        margin-top: 100px;
+        width: 250px;
+        height: 10px;
+        border: 1px solid #CE8E8E;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .front .loader .fill {
+        position: absolute;
+        height: 100%;
+        width: 0;
+        background: #CE8E8E;
+        border-radius: 20px;
+        animation: animate 10s linear forwards;
+      }
+
+      @keyframes animate {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .birthday {
+  position: fixed;
+  top: 0;
+  left: 120%;
+  height: 100%;
+  width: 100%;
+  background-color: #E4A5A5; 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff; 
+}
+
+      .birthday h1:nth-child(1) {
+        font-size: 4.3rem;
+        margin-left: 150%;
+      }
+
+      .birthday h1.year {
+        font-size: 12.3rem;
+        margin-top: 80%;
+      }
+
+      .firework {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5vmin;
+  aspect-ratio: 1;
+  background: transparent;
+  background-size: 0.5vmin 0.5vmin;
+  background-repeat: no-repeat;
+  animation: firework 1s infinite;
+  animation-delay: 14s;
+}
+
+@keyframes firework {
+  0% {
+    transform: translate(-50%, 60vh);
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  50% {
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  100% {
+    width: 45vmin;
+    opacity: 0;
+  }
+}
+
+.firework::before,
+.firework::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5vmin;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(92, 105, 32) 0.2vmin, #0000 0) 50%
+      00%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 00% 50%,
+    radial-gradient(circle, rgba(0, 81, 255, 1) 0.5vmin, #0000 0) 50% 99%,
+    radial-gradient(circle, rgba(255, 94, 0, 1) 0.2vmin, #0000 0) 99% 50%,
+    radial-gradient(circle, rgba(55, 0, 255, 1) 0.3vmin, #0000 0) 80% 90%,
+    radial-gradient(circle, rgba(255, 0, 191, 1) 0.5vmin, #0000 0) 95% 90%,
+    radial-gradient(circle, rgb(0, 247, 255) 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 80% 10%,
+    radial-gradient(circle, rgba(0, 255, 21, 1) 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, #ffbf00 0.3vmin, #0000 0) 45% 20%,
+    radial-gradient(circle, #fff 0.5vmin, #0000 0) 13% 24%,
+    radial-gradient(circle, rgb(0, 247, 255) 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 80% 10%,
+    radial-gradient(circle, rgba(0, 255, 21, 1) 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 45% 20%,
+    radial-gradient(circle, #fff 0.5vmin, #0000 0) 13% 24%,
+    radial-gradient(circle, #ffbf00 0.5vmin, #0000 0) 13% 24%;
+  background-size: 0.5vmin 0.5vmin;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: firework 1s infinite;
+  animation-delay: 14s;
+}
+
+.firework::before {
+  transform: translate(-50%, -50%) rotate(25deg) !important;
+}
+
+.firework::after {
+  transform: translate(-50%, -50%) rotate(-37deg) !important;
+}
+
+      @media only screen and (max-width: 600px) {
+        .front .info {
+          font-size: 2rem;
+        }
+
+        .front .countdown {
+          font-size: 3rem;
+        }
+
+        .front .loader {
+          margin-top: 50px;
+          width: 200px;
+          height: 8px;
+        }
+
+        .birthday h1:nth-child(1) {
+          font-size: 2rem;
+          margin-left: 120%;
+        }
+
+        .birthday h1.year {
+          font-size: 6rem;
+          margin-top: 50%;
+        }
+      }
+.buttons {
+  display: flex;
+  gap: 20px; 
+  margin-top: 20px; 
+}
+
+.btn {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #E4A5A5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background-color: #CE8E8E; 
+}
+    </style>
+  </head>
+  <body>
+    <div class="front">
+      <p class="info">Are You Ready?</p>
+      <div class="countdown">
+        <h1 class="three">3</h1>
+        <h1 class="two">2</h1>
+        <h1 class="one">1</h1>
+      </div>
+      <div class="loader">
+        <div class="fill"></div>
+      </div>
+    </div>
+
+    <div class="birthday">
+      <h1 class="greeting">Happy Birthday</h1>
+      <h1 class="year"></h1>
+ <div class="buttons">
+    <button class="btn" onclick="location.href='Halaman1.html'">Next</button>
+    <button class="btn" onclick="location.href='Flowers.html'">Suprise</button>
+  </div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
+    </div>
+
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+      integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+window.onload = () => {
+    gsap.to(".info", {
+      opacity: 0,
+      display: "none",
+      duration: 1,
+      delay: 6
+    });
+    gsap.to("h1.three", {
+      opacity: 1,
+      display: "block",
+      duration: 0.5,
+      delay: 7
+    });
+  
+    gsap.to("h1.three", {
+      opacity: 0,
+      display: "none",
+      duration: 0.5,
+      delay: 7.5
+    });
+  
+    gsap.to("h1.two", {
+      opacity: 1,
+      display: "block",
+      duration: 0.5,
+      delay: 8
+    });
+
+    gsap.to("h1.two", {
+      opacity: 0,
+      display: "none",
+      duration: 0.5,
+      delay: 8.5
+    });
+  
+    gsap.to("h1.one", {
+      opacity: 1,
+      display: "block",
+      duration: 0.5,
+      delay: 9
+    });
+  
+    gsap.to("h1.one", {
+      opacity: 0,
+      display: "none",
+      duration: 0.5,
+      delay: 9.5
+    });
+  
+    gsap.to(".loader", {
+      opacity: 0,
+      display: "none",
+      duration: 0.5,
+      delay: 10
+    });
+  
+    gsap.to(".front", {
+      left: "-100%",
+      duration: 1.2,
+      delay: 10.5,
+      ease: "power2.inOut"
+    });
+  
+    gsap.to(".front-shadow", {
+      left: "-100%",
+      duration: 0.8,
+      delay: 10.5,
+      ease: "power2.inOut"
+    });
+  
+    gsap.to(".birthday", {
+      left: "0",
+      duration: 1,
+      delay: 10.7,
+      ease: "power2.inOut"
+    });
+  
+    gsap.to("h1.greeting", {
+      marginLeft: "0",
+      duration: 1.5,
+      delay: 11.3,
+      ease: "power2.inOut"
+    });
+  
+    gsap.to("h1.year", {
+      marginTop: "0",
+      duration: 2.5,
+      delay: 12,
+      ease: "power2.inOut"
+    });
+  
+    const fireworks1 = document.querySelectorAll(".firework")[0];
+    const fireworks2 = document.querySelectorAll(".firework")[1];
+    const fireworks3 = document.querySelectorAll(".firework")[2];
+    const fireworks4 = document.querySelectorAll(".firework")[3];
+    const fireworks5 = document.querySelectorAll(".firework")[4];
+    const fireworks6 = document.querySelectorAll(".firework")[5];
+    const fireworks7 = document.querySelectorAll(".firework")[6];
+    const fireworks8 = document.querySelectorAll(".firework")[7];
+    const fireworks9 = document.querySelectorAll(".firework")[8];
+    const fireworks10 = document.querySelectorAll(".firework")[9];
+    const fireworks11 = document.querySelectorAll(".firework")[10];
+    const fireworks12 = document.querySelectorAll(".firework")[11];
+    const fireworks13 = document.querySelectorAll(".firework")[12];
+    const fireworks14 = document.querySelectorAll(".firework")[13];
+    const fireworks15 = document.querySelectorAll(".firework")[14];
+    const fireworks16 = document.querySelectorAll(".firework")[15];
+    const fireworks17 = document.querySelectorAll(".firework")[16];
+    const fireworks18 = document.querySelectorAll(".firework")[17];
+    const fireworks19 = document.querySelectorAll(".firework")[18];
+    const fireworks20 = document.querySelectorAll(".firework")[19];
+    const fireworks21 = document.querySelectorAll(".firework")[20];
+    const fireworks22 = document.querySelectorAll(".firework")[21];
+    const fireworks23 = document.querySelectorAll(".firework")[22];
+  
+    setInterval(() => {
+      fireworks1.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks2.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks3.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks6.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks5.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks4.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks7.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks8.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks9.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks10.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks11.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks12.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks13.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks14.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks15.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks16.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks17.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks18.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks19.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks20.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks21.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * 100
+      }px`;
+      fireworks22.style = `top: ${Math.random() * window.innerHeight}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+      fireworks23.style = `top: ${Math.random() * window.innerWidth}px; left: ${
+        Math.random() * window.innerWidth
+      }px`;
+    }, 1000);
+  };
+  
+</script>
+  </body>
+</html>
